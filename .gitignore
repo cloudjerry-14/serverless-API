@@ -1,0 +1,6 @@
+/.terraform
+.terraform*
+.terraformrc
+/.terraform.lock.hcl
+/.idea
+application.auto.tfvars
