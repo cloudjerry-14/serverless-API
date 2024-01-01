@@ -1,0 +1,16 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:      
+  - name: Workspace Initialization
+    env:
+      AWS_CLI_AUTO_PROMPT: on-partial
+
+vscode:
+  extensions:
+    - ms-python.python
+    - hashicorp.terraform
+    - ms-azuretools.vscode-docker
+    - ms-toolsai.jupyter
+    - ms-toolsai.vscode-jupyter-cell-tags
+    - ms-toolsai.vscode-jupyter-slideshow
