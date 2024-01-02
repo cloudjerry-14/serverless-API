@@ -57,7 +57,7 @@ output_path = "../lambda/artifacts/app.zip"
 resource "aws_lambda_function" "api_lambda" {
 filename                       = "../lambda/artifacts/app.zip"
 function_name                  = "api_lambda"
-role                           = aws_iam_role.existing_lambda_role.arn
+role                           = data.aws_iam_role.existing_lambda_role.arn
 handler                        = "index.lambda_handler"
 runtime                        = "python3.8"
 # depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
