@@ -9,5 +9,5 @@ terraform {
 
 
 module "lambdas" {
-  source = "./module/lambda" 
+  source = "./module/lambdas" 
 }
