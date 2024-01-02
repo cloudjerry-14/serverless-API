@@ -46,12 +46,12 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
  
 data "archive_file" "zip_the_python_code" {
 type        = "zip"
-source_dir  = "/lambda/src"
-output_path = "/lambda/artifacts/app.zip"
+source_dir  = "lambda/src"
+output_path = "lambda/artifacts/app.zip"
 }
 
 resource "aws_lambda_function" "api_lambda" {
-filename                       = "/lambda/artifacts/app.zip"
+filename                       = "lambda/artifacts/app.zip"
 function_name                  = "api_lambda"
 role                           = aws_iam_role.lambda_role.arn
 handler                        = "index.lambda_handler"
