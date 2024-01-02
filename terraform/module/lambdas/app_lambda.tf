@@ -39,9 +39,13 @@
 # EOF
 # }
  
-resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
- role        = aws_iam_role.lambda_role.name
- policy_arn  = aws_iam_policy.iam_policy_for_lambda.arn
+# resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
+#  role        = aws_iam_role.lambda_role.name
+#  policy_arn  = aws_iam_policy.iam_policy_for_lambda.arn
+# }
+
+data "aws_iam_role" "existing_lambda_role" {
+  name = "api_Lambda_Function_Role"
 }
  
 data "archive_file" "zip_the_python_code" {
@@ -53,8 +57,8 @@ output_path = "../lambda/artifacts/app.zip"
 resource "aws_lambda_function" "api_lambda" {
 filename                       = "../lambda/artifacts/app.zip"
 function_name                  = "api_lambda"
-role                           = aws_iam_role.lambda_role.arn
+role                           = aws_iam_role.existing_lambda_role.arn
 handler                        = "index.lambda_handler"
 runtime                        = "python3.8"
-depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
+# depends_on                     = [aws_iam_role_policy_attachment.attach_iam_policy_to_iam_role]
 }
